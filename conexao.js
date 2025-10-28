@@ -5,19 +5,19 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Conexão com o MySQL
+
 const dbConfig = {
   host: '127.0.0.1',
   user: 'root',
-  password: 'password',  // troque pela sua senha
+  password: 'password',  
   database: 'filmes_series'
 };
 
-// Permitir que o front-end receba JSON
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota para listar filmes
+
 app.get('/api/filmes', async (req, res) => {
   try {
     const conexao = await mysql.createConnection(dbConfig);
@@ -29,7 +29,7 @@ app.get('/api/filmes', async (req, res) => {
   }
 });
 
-// Rota para adicionar filme
+
 app.post('/api/filmes', async (req, res) => {
   const { titulo, genero, ano } = req.body;
   try {
